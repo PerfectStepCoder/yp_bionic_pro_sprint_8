@@ -22,6 +22,11 @@ const ReportPage: React.FC = () => {
         }
       });
 
+      if (!response.ok) {
+        throw new Error(`Failed to download report: ${response.status} ${response.statusText}`);
+      } else {
+        console.log(response.text);
+      }
       
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred');
